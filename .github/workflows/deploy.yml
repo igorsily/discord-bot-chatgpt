@@ -18,12 +18,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-      - name: Add github actions IP to security group
-        env:
-          AWS_SECURITY_GROUP: ${{ secrets.AWS_SECURITY_GROUP }}
-        run: |
-          aws ec2 authorize-security-group-ingress --group-id ${{ env.AWS_SECURITY_GROUP }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/16
-          sleep 10
+#      - name: Add github actions IP to security group
+#        env:
+#          AWS_SECURITY_GROUP: ${{ secrets.AWS_SECURITY_GROUP }}
+#        run: |
+#          aws ec2 authorize-security-group-ingress --group-id ${{ env.AWS_SECURITY_GROUP }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/16
+#          sleep 10
       - name: Deploy on AWS EC2
         env:
           PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
@@ -42,9 +42,9 @@ jobs:
             ./deploy.sh
           '
           rm -rf private_key.pem
-      - name: Remove github actions IP from security group
-        env:
-          AWS_SECURITY_GROUP: ${{ secrets.AWS_SECURITY_GROUP }}
-        run: |
-          aws ec2 revoke-security-group-ingress --group-id ${{ env.AWS_SECURITY_GROUP }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/16
-        if: always()
+#      - name: Remove github actions IP from security group
+#        env:
+#          AWS_SECURITY_GROUP: ${{ secrets.AWS_SECURITY_GROUP }}
+#        run: |
+#          aws ec2 revoke-security-group-ingress --group-id ${{ env.AWS_SECURITY_GROUP }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/16
+#        if: always()
