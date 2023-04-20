@@ -35,8 +35,14 @@ public abstract class MessageListener {
                 .filter(message -> !message.getContent().isEmpty())
                 .flatMap(Message::getChannel)
                 .flatMap(channel -> {
-                    String content = eventMessage.getContent();
-                    Object response = processMessage(content);
+                    String content = eventMessage.getContent().trim();
+
+                    if (content.toLowerCase().startsWith("gpt:")) {
+                        content = content.replace("gpt:", "");
+                    } else {
+                        return Mono.empty();
+                    }
+                    Object response = processMessage(content.trim());
                     if (response instanceof String) {
                         return channel.createMessage((String) response);
                     } else if (response instanceof EmbedCreateSpec) {
