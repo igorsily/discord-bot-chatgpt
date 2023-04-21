@@ -6,4 +6,4 @@ openai:
   api-key: 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
   model: text-davinci-003
 server:
-  port: 4565
+  port: 8091
