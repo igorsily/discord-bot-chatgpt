@@ -1,9 +1,9 @@
 discord:
-  token: MTA5NDQwNjcyOTYzMjA2NzU4NA.Gtclua.KGIkPmIBEBHj_5l9x1MvQmhDdg31-l4TGxDwDU
-  channel: 1094407452340011048
+  token: ${DISCORD_TOKEN}
+  channel: ${DISCORD_CHANNE}L
 
 openai:
-  api-key: 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
-  model: text-davinci-003
+  api-key: ${OPENAI_API_KEY}
+  model: ${OPENAI_MODEL}
 server:
   port: 8091

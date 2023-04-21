@@ -56,7 +56,7 @@
     "EXTERNAL",
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:667803560337:task-definition/discordgpt-taskdefinition:1",
+  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:667803560337:task-definition/discordgpt-taskdefinition:2",
   "family": "discordgpt-taskdefinition",
   "requiresAttributes": [
     {
