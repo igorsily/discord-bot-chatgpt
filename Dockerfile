@@ -1,8 +1,5 @@
 FROM openjdk:17-jdk-slim
 
-WORKDIR /usr/src/app
-COPY . /usr/src/app
-
 VOLUME /tmp
 
 ARG REGION_ARG=sa-east-1
@@ -12,7 +9,6 @@ ENV AWS_REGION=$REGION_ARG
 ENV AWS_ACCESS_KEY=$ACCESS_ARG
 ENV AWS_SECRET_KEY=$SECRET_ARG
 
-#ARG JAR_FILE=/usr/src/app/target/*.jar
 ARG JAR_FILE=target/*.jar
 
 # Copying JAR file
